@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NordLab — AI Scenario Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="shell">
+
+    <header>
+      <div class="logo-row">
+        <div class="logo-icon">⬡</div>
+        <div>
+          <div class="logo-title">NordLab</div>
+          <div class="logo-sub">AI Scenario Generator</div>
+        </div>
+      </div>
+      <div class="badge">BETA</div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <h1>Generer øvelsesscenarioer på sekunder</h1>
+        <p>Fyll inn parametrene nedenfor. AI-en designer et komplett, realistisk krisescenario klar for bruk i øvelse.</p>
+      </section>
+
+      <section class="form-card">
+        <div class="form-grid">
+
+          <div class="field">
+            <label>Krisetype</label>
+            <select id="crisis">
+              <option value="">Velg type...</option>
+              <option>Skogbrann</option>
+              <option>Industriulykke / eksplosjon</option>
+              <option>Kjemikalieutslipp</option>
+              <option>Flom / ekstremvær</option>
+              <option>Masseulykke på vei</option>
+              <option>Terrorhendelse</option>
+              <option>Strømbrudd / blackout</option>
+              <option>Oljeutslipp i hav</option>
+              <option>Pandemi / smitteutbrudd</option>
+              <option>Savnet person i Arktis</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Geografisk kontekst</label>
+            <select id="geography">
+              <option value="">Velg sted...</option>
+              <option>Bodø sentrum</option>
+              <option>Arktisk kystlinje</option>
+              <option>Offshore installasjon</option>
+              <option>Fjellterreng Nord-Norge</option>
+              <option>Industrihavn</option>
+              <option>Tett bebygget byområde</option>
+              <option>Avsidesliggende innland</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Antall aktører / etater</label>
+            <select id="actors">
+              <option value="">Velg omfang...</option>
+              <option>Liten (1–2 etater)</option>
+              <option>Medium (3–5 etater)</option>
+              <option>Stor (6+ etater, samvirke)</option>
+              <option>Nasjonal / internasjonal</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Vanskelighetsgrad</label>
+            <select id="difficulty">
+              <option value="">Velg nivå...</option>
+              <option>Grunnleggende</option>
+              <option>Middels</option>
+              <option>Avansert</option>
+              <option>Ekspert</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label>Spesielle utfordringer (valgfritt)</label>
+            <input type="text" id="extra" placeholder="F.eks. dårlig vær, kommunikasjonssvikt, manglende ressurser..." />
+          </div>
+
+        </div>
+
+        <button id="generate-btn" onclick="generateScenario()">Generer scenario ⚡</button>
+      </section>
+
+      <section class="output" id="output" style="display:none">
+        <div class="output-header">
+          <span class="output-label">GENERERT SCENARIO</span>
+          <button class="copy-btn" onclick="copyScenario()">Kopier ↗</button>
+        </div>
+        <div class="output-body" id="output-body"></div>
+        <div class="output-actions">
+          <button class="action-btn" onclick="generateScenario()">Generer nytt</button>
+          <button class="action-btn primary" onclick="exportPDF()">Eksporter PDF</button>
+        </div>
+      </section>
+
+      <div class="loader" id="loader" style="display:none">
+        <div class="spinner"></div>
+        <span>Genererer scenario...</span>
+      </div>
+    </main>
+
+    <footer>
+      Nord Universitet · NordLab Beredskapslaboratorium · AI-drevet øvelsesdesign
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
